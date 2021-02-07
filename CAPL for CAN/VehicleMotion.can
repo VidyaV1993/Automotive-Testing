@@ -1,0 +1,36 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message VehicleMotion vm;
+  msTimer timer_vm;
+}
+
+on start
+{
+  vm.EngineRunning = 1;
+  setTimer(timer_vm, 100);
+}
+
+on timer timer_vm
+{
+  output(vm);
+  setTimer(timer_vm, 100); //reset timer to make it cyclic
+}
+
+on message AccelarationMsg
+{
+  vm.Velocity = this.Acceleration; //this pointer is implicit which is pointing to the last instance of the message (here last instance of acceleration msg)
+}
+
+on message BrakeMsg
+{
+  if(this.BrakeStatus==1)
+  {
+    vm.Velocity = 0; 
+  }
+}

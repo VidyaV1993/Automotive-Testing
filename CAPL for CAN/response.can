@@ -1,0 +1,19 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+   message 0x130 response;
+}
+
+on message 0x467
+{
+  write(" Responsing for 0x467...");
+  response.dlc = 1;
+  response.byte(0) = 0xaa;
+  output(response);
+}
+

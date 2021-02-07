@@ -1,0 +1,67 @@
+VERSION "created by canmatrix"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 260 VehicleMotion: 8 Vector__XXX
+ SG_ EngineRunning : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Velocity : 8|16@1+ (0.1,0) [0|65535] "km/h" Vector__XXX
+
+BO_ 261 BrakeMsg: 8 Vector__XXX
+ SG_ BrakeStatus : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 262 AccelarationMsg: 8 Vector__XXX
+ SG_ Acceleration : 0|16@1+ (0.1,0) [0|65535] "m/s2" Vector__XXX
+
+
+
+CM_ SG_ 260 EngineRunning "Echos Engine Running Status";
+CM_ SG_ 260 Velocity "Value of the Vehicles Velocity";
+CM_ SG_ 261 BrakeStatus "Status of wether Brake is applied or not";
+CM_ SG_ 262 Acceleration "Value of the Acceleration Applaid";
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 65535;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 65535;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "vector_leerstring";
+BA_DEF_ SG_  "GenSigSNA" STRING ;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "";
+BA_DEF_DEF_  "GenSigSNA" "";
+VAL_ 260 EngineRunning 0 "NotRunning" 1 "Running" ;
+VAL_ 261 BrakeStatus 0 "BrakeNotApplied" 1 "BrakeApplied" ;
+

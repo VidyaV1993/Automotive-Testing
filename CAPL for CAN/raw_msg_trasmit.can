@@ -1,0 +1,45 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message 0x467 frame={dlc=3, byte(0)=0xab, byte(1)=0x12, byte(2)=12};
+  message 0x300 cyclic_msg;
+  //msTimer t1; //millisecond timer
+  timer t2; //second timer
+}
+
+
+on start
+{
+  /*
+  write(" Start clicked...Sending message...."); //similar to printf() in C
+  output(frame);
+  */
+  cyclic_msg.dlc = 2;           //values can be set using '.' operator also
+  cyclic_msg.byte(0) = 0x11;
+  cyclic_msg.byte(1) = 0x56;
+  
+  //setTimer(t1, 100); //100 ms timer
+  setTimer(t2, 10); //100 ms timer
+  write(" Timer set");
+}
+
+
+on key 'k'
+{
+  write(" 'k' pressed...Sending message...."); 
+  output(frame);
+}
+
+on timer t2
+{
+  write(" 10 sec time expired"); 
+  output(cyclic_msg);
+  //setTimer(t1, 100); //set timer every 100 ms to make it cyclic
+  setTimer(t2, 10); 
+}
+  

@@ -1,0 +1,39 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message AccelarationMsg acc;
+  message BrakeMsg br;
+  int i = 10;
+}
+
+on key 'a' //to increment acceleration
+{
+  if(i<=1800) //value<18 (factor 0.1 is involved)
+  {
+    acc.Acceleration = i;
+    i = i+10;
+    output(acc);
+  } 
+}
+
+on key 'd' //to decrement acceleration
+{
+  if(i>0) 
+  {
+    i = i-10;
+    acc.Acceleration = i;
+    output(acc);
+  }
+}
+
+on key 'b' //to set break status
+{
+  br.BrakeStatus = 1;
+  output(br);
+}
+
